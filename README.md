@@ -18,6 +18,7 @@ Firefox
 	firefox with vimoperator - web
 	nitrogen - for setting background image
 	xf86-input-mtrack - touchpad driver
+	vim - text editor
 
 # Usage 
 Copy the files you need and edit then to fit your needs.
@@ -33,3 +34,7 @@ colors, fonts and other settings are located in .Xresources
 .vimperatorrc and vimperator folder are placed in ~/.
 stylish.sqlite, use stylish addon in firefox, go to about:config and find 
 extensions.stylish.dbfile and point it to this file to load styles.
+
+## vim 
+vundle used to manage plugins. YouCompleteMe and tern needs to have aditional install steps.
+install.sh and npm install.

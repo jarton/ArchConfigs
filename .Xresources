@@ -1,27 +1,127 @@
 Xresources
 
-*background:#222222
-*foreground:#e8e9ca
-
-*color0:    #222222
-*color1:    #8b3e2f
-*color2:    #526f33
-*color3:    #665847
-*color4:    #4a708b
-*color5:    #7a378b
-*color6:    #528b8b
-*color7:    #999999
-
-*color8:    #4c4c4c
-*color9:    #d75f00
-*color10:   #cee318
-*color11:   #eee685
-*color12:   #9ac0cd
-*color13:   #9f79ee
-*color14:   #79cdcd
-*color15:   #e8e9ca
-
 *font: xft:dejavu sans mono:size=10
 Emacs.Font:dejavu sans mono-12
 
+URxvt*fading:  10
+Urxvt*termName:  screen-256color
 URxvt.scrollBar: false
+
+### THEMES ### use comments to selct
+# theme unknown - source unknown
+
+#*background:#222222
+#*foreground:#e8e9ca
+#
+#*color0:    #222222
+#*color1:    #8b3e2f
+#*color2:    #526f33
+#*color3:    #665847
+#*color4:    #4a708b
+#*color5:    #7a378b
+#*color6:    #528b8b
+#*color7:    #999999
+#
+#*color8:    #4c4c4c
+#*color9:    #d75f00
+#*color10:   #cee318
+#*color11:   #eee685
+#*color12:   #9ac0cd
+#*color13:   #9f79ee
+#*color14:   #79cdcd
+#*color15:   #e8e9ca
+
+# tomorrow theme
+
+# souce github:
+#chriskempson/tomorrow-theme
+
+! Names of the original color are in parenthesis.
+
+! With the exception of DarkYellow (which is Orange) and Yellow
+! (which is Yellow), bright colors were derived by simply upping the 'value'
+! of each color by 22.  This number was derived from maxing out the value on
+! Red.
+
+#light :
+
+#*foreground:   #4d4d4c
+#*background:   #fafafa
+#! CursorColor (Selection)
+#*cursorColor:  #d6d6d6
+#
+#! Black + Grey (Comment)
+#*color0:       #000000
+#*color8:       #8e908c
+#! Red + Bright Red
+#*color1:       #c82829
+#*color9:       #ff3334
+#! Green + Bright Green
+#*color2:       #718c00
+#*color10:      #9ec400
+#! Yellow (Orange) + Bright Yellow (Yellow)
+#*color3:       #f5871f
+#*color11:      #eab700
+#! Blue + Bright Blue
+#*color4:       #4271ae
+#*color12:      #5795e6
+#! Magenta (Purple) + Bright Magenta
+#*color5:       #8959a8
+#*color13:      #b777e0
+#! Cyan (Aqua) + Bright Cyan
+#*color6:       #3e999f
+#*color14:      #54ced6
+#! Light Grey (Selection) + White (Current Line)
+#*color7:       #d6d6d6
+#*color15:      #efefef
+
+!TomorrowNight
+#define t_background        #1d1f21
+#define t_current_line      #282a2e
+#define t_selection      	#373b41
+#define t_foreground      	#c5c8c6
+#define t_comment	     	#969896
+#define t_red		     	#cc6666
+#define t_orange	     	#de935f
+#define t_yellow        	#f0c674
+#define t_green	        	#b5bd68
+#define t_aqua	        	#8abeb7
+#define t_blue	        	#81a2be
+#define t_purple        	#b294bb
+
+
+*.foreground:   t_foreground
+*.background:   t_background
+*.cursorColor:  #aeafad
+
+! Black / Grey
+*.color0:       #000000
+*.color8:       #666666
+
+! Red / Bright Red
+*.color1:       t_red
+*.color9:       #FF3334
+
+! Green + Bright Green
+*.color2:       t_green
+*.color10:      #9ec400
+
+! Yellow (Orange) + Bright Yellow (Yellow)
+*.color3:       t_orange
+*.color11:      t_yellow
+
+! Blue + Bright Blue
+*.color4:       t_blue
+*.color12:      t_blue
+
+! Magenta (Purple) + Bright Magenta
+*.color5:       t_purple
+*.color13:      #b777e0
+
+! Cyan (Aqua) + Bright Cyan
+*.color6:       t_aqua
+*.color14:      #54ced6
+
+! Light Grey (Selection) + White (Current Line)
+*.color7:       t_selection
+*.color15:      t_current_line
