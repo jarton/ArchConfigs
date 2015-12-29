@@ -1,3 +1,28 @@
 colorscheme twily
 noremap j 5j
 noremap k 5k
+" don't focus any "input" elements automatically when open pages.
+set focuscontent
+
+" To Enable map <Space>
+js << EOM
+  window.addEventListener('keypress',function (event) {
+  	var code=event.charCode;
+  	if ((liberator.mode === modes.INSERT && modes.extended === modes.MENU)
+  	||(liberator.mode ==modes.NORMAL && code==32)
+  	||(liberator.mode ==modes.COMMAND_LINE && code !=32)){
+  		let map = mappings.get(liberator.mode, events.toString(event));
+  			if (map) {
+  				event.preventDefault();
+  				event.stopPropagation();
+  				map.execute();
+  			}
+	}
+  },false);
+EOM
+
+let mapleader="|"
+map <space> <leader>
+
+noremap <leader>l :bnext<CR>
+noremap <leader>h :bprevious<CR>

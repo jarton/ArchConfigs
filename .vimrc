@@ -57,6 +57,14 @@ syntax on         " syntax highlighting
 let mapleader="\<space>"
 
 let g:airline#extensions#tabline#enabled = 1  "show bufferline in airline
+let g:airline_powerline_fonts = 1             "symbols and font for airline
+
+" the separator used on the left side
+let g:airline_left_sep=''
+" " the separator used on the right side 
+let g:airline_right_sep=''
+
+let g:airline_theme='tomorrow'
 
 set t_Co=256	  "for colorsheme to work in tmux
 set background=dark
