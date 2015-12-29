@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+se rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -19,21 +19,22 @@ Plugin 'sickill/vim-monokai'
 Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/base16-vim'
 Plugin 'w0ng/vim-hybrid'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 "plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'christoomey/vim-tmux-navigator'
 
 "javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ternjs/tern_for_vim'
 
-
-
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,6 +53,12 @@ filetype plugin indent on    " required
 
 syntax on         " syntax highlighting
 
+" LEADER KEY
+let mapleader="\<space>"
+
+let g:airline#extensions#tabline#enabled = 1  "show bufferline in airline
+
+set t_Co=256	  "for colorsheme to work in tmux
 set background=dark
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
@@ -70,5 +77,13 @@ set smarttab      " insert tabs on the start of a line according to
                     "    shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
+set laststatus=2
 
 colorscheme hybrid
+
+" keybindings
+noremap <Leader>l :bn<cr> 
+noremap <Leader>h :bp<cr>
+noremap <Leader>d :bd<cr>
+nnoremap <Leader>w :w<CR>
+
