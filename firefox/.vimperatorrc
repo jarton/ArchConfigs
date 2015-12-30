@@ -26,3 +26,5 @@ map <space> <leader>
 
 noremap <leader>l :bnext<CR>
 noremap <leader>h :bprevious<CR>
+
+colorscheme indigo
