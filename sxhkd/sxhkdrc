@@ -1,0 +1,150 @@
+#
+## my hotkeys
+#
+
+# Lock screen
+super + shift + x
+  lock.sh
+
+XF86AudioRaiseVolume
+  amixer sset Master 5%+ unmute
+
+XF86AudioLowerVolume
+  amixer sset Master 5%- unmute
+
+XF86AudioMute
+  amixer sset Master toggle
+
+XF86MonBrightnessUp
+  xbacklight -inc 10%
+
+XF86MonBrightnessDown
+  xbacklight -dec 10%
+
+XF86AudioPlay
+  playerctl play-pause
+
+XF86AudioStop
+  playerctl stop
+
+XF86AudioNext
+  playerctl next
+
+XF86AudioPrev
+  playerctl previous
+
+#
+## bspwm hotkeys
+#
+
+alt + shift + q 
+	pkill -x panel; bspc quit
+
+alt + q
+	bspc window -c
+
+alt + t
+	bspc desktop -l next
+
+alt + b
+	bspc desktop -B
+
+alt + {s,f}
+	bspc window -t {floating,fullscreen}
+
+alt + {grave,Tab}
+	bspc {window,desktop} -f last
+
+super + apostrophe
+	bspc window -s last
+
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
+super + y
+	bspc window -w last.manual
+
+super + m
+	bspc window -s biggest
+
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+
+alt + {j,k}
+	bspc window -f {next,prev}
+
+alt + shift {j,k}
+	bspc desktop -C {backward,forward}
+
+alt + {h,l}
+	bspc desktop -f {prev,next}
+
+alt + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
+
+super + ctrl + {_,shift + }space
+	bspc {window -p cancel,desktop -c}
+
+super + alt + {h,j,k,l}
+	bspc window -e {left -10,down +10,up -10,right +10}
+
+super + alt + shift + {h,j,k,l}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+alt + {1-5}
+	bspc desktop -f {1-5}
+
+alt + shift {1-5}
+	bspc window -d {1-5}
+
+~button1
+	bspc pointer -g focus
+
+alt + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+alt + !button{1-3}
+	bspc pointer -t %i %i
+
+alt + @button{1-3}
+	bspc pointer -u
+
+#
+# wm independent hotkeys
+#
+
+alt + Return
+	urxvt
+
+#super + space
+#  ~/.scripts/desktop/launch
+#
+alt + p
+	dmenu_run
+
+# Decrease monitor backlight by 5%
+m:0x0 + c:232
+xbacklight -dec 5"
+
+# Increase monitor backlight by 5%
+m:0x0 + c:233
+xbacklight -inc 5
+
+# Increase volume by 5%
+# change to any value you wish
+m:0x0 + c:123
+amixer -c 1 set Master 5%+
+
+# Decrease volume by 5%
+m:0x0 + c:122
+amixer -c 1 set Master 5%-
+
+# Toggle mute/unmute audio
+m:0x0 + c:121
+amixer -c 1 set Master toggle
+
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd
