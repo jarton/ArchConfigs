@@ -7,7 +7,7 @@
 
 nitrogen --restore &
 
-conky -x 0 -y 0 -d &
+#conky -x 0 -y 0 -d &
 
 while true 
 do
@@ -15,4 +15,8 @@ do
     sleep 1m
 done &
 
-exec dwm
+#exec dwm
+sxhkd &
+urxvt &
+exec bspwm
+
