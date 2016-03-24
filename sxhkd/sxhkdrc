@@ -41,7 +41,7 @@ alt + shift + q
 	pkill -x panel; bspc quit
 
 alt + q
-	bspc window -c
+	bspc node -c
 
 alt + t
 	bspc desktop -l next
@@ -49,31 +49,33 @@ alt + t
 alt + b
 	bspc desktop -B
 
-alt + {s,f}
-	bspc window -t {floating,fullscreen}
+alt + {t,s,f}
+	state={pseudo_tiled,floating,fullscreen}; \
+	bspc query -N -n "focused.$\{state\}" && state=tiled; \
+	bspc node -t "$state"
 
 alt + {grave,Tab}
-	bspc {window,desktop} -f last
+	bspc {node,desktop} -f last
 
 super + apostrophe
-	bspc window -s last
+	bspc node -s last
 
 super + {o,i}
 	bspc control --record-history off; \
-	bspc window {older,newer} -f; \
+	bspc node {older,newer} -f; \
 	bspc control --record-history on
 
 super + y
-	bspc window -w last.manual
+	bspc node -w last.manual
 
 super + m
-	bspc window -s biggest
+	bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
-	bspc window -{f,s} {left,down,up,right}
+	bspc node -{f,s} {left,down,up,right}
 
 alt + {j,k}
-	bspc window -f {next,prev}
+	bspc node -f {next,prev}
 
 alt + shift {j,k}
 	bspc desktop -C {backward,forward}
@@ -82,22 +84,22 @@ alt + {h,l}
 	bspc desktop -f {prev,next}
 
 alt + ctrl + {h,j,k,l}
-	bspc window -p {left,down,up,right}
+	bspc node -p {left,down,up,right}
 
 super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
+	bspc {node -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-	bspc window -e {left -10,down +10,up -10,right +10}
+	bspc node -e {left -10,down +10,up -10,right +10}
 
 super + alt + shift + {h,j,k,l}
-	bspc window -e {right -10,up +10,down -10,left +10}
+	bspc node -e {right -10,up +10,down -10,left +10}
 
 alt + {1-5}
 	bspc desktop -f {1-5}
 
 alt + shift {1-5}
-	bspc window -d {1-5}
+	bspc node -d {1-5}
 
 ~button1
 	bspc pointer -g focus

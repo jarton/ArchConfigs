@@ -24,18 +24,37 @@ Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 "plugins
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 "javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'pangloss/vim-javascript'
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
+
+"python
+Plugin 'nvie/vim-flake8'
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+let python_highlight_all=1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,11 +86,24 @@ let g:airline_right_sep=''
 
 let g:airline_theme='tomorrow'
 
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
+
+" syntastic check on file open
+let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers = ['eslint']
+
+" conpletion settings for youcompleteme
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+
 set t_Co=256	  "for colorsheme to work in tmux
 set background=dark
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
 set backspace=indent,eol,start
+set list lcs=trail:·,precedes:«,extends:»,eol:¬,tab:▸\ 
                     " allow backspacing over everything in insert mode
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
@@ -86,7 +118,9 @@ set smarttab      " insert tabs on the start of a line according to
                     "    shiftwidth, not tabstop
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
+set hidden 			"buffer swtiching wihtout writing 
 set laststatus=2
+set encoding=utf-8
 
 colorscheme hybrid
 
@@ -95,4 +129,5 @@ noremap <Leader>l :bn<cr>
 noremap <Leader>h :bp<cr>
 noremap <Leader>d :bd<cr>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 
