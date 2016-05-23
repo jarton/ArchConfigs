@@ -45,6 +45,7 @@ au BufNewFile,BufRead *.js,*.html,*.css set softtabstop=2
 
 "python
 Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/indentpython.vim'
 au BufNewFile,BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
