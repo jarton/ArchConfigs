@@ -39,9 +39,12 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2
 au BufNewFile,BufRead *.js,*.html,*.css set shiftwidth=2
 au BufNewFile,BufRead *.js,*.html,*.css set softtabstop=2
+let g:jsx_ext_required = 0
 
 "python
 Plugin 'nvie/vim-flake8'
