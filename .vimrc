@@ -34,14 +34,23 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jistr/vim-nerdtree-tabs'
 
+"writing
+Plugin 'junegunn/goyo.vim'
+Plugin 'reedes/vim-pencil'
+Plugin 'junegunn/limelight.vim'
+
+ 
 "javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2
 au BufNewFile,BufRead *.js,*.html,*.css set shiftwidth=2
 au BufNewFile,BufRead *.js,*.html,*.css set softtabstop=2
+let g:jsx_ext_required = 0
 
 "python
 Plugin 'nvie/vim-flake8'
@@ -130,4 +139,21 @@ noremap <Leader>h :bp<cr>
 noremap <Leader>d :bd<cr>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
+
+" writing mode
+map <F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+
+" spellcheck language
+inoremap <silent> <F5> <c -O>:call SpellToggle()<cr>
+map <silent> <F5> :call SpellToggle()<cr>
+function SpellToggle()
+    if &spell == 1
+            set nospell
+        else
+            set spell
+            set spelllang=nn ",nb,en_us
+    endif
+endfunctio
+
+
 
