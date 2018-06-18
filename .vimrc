@@ -22,12 +22,13 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'w0ng/vim-hybrid'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
-"plugins
+"General plugins
+Plugin 'Shougo/deoplete.nvim'
+
+Plugin 'w0rp/ale'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -39,11 +40,9 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/limelight.vim'
 
- 
 "javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
-Plugin 'ternjs/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
@@ -65,47 +64,63 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 let python_highlight_all=1
 
-" All of your Plugins must be added before the following line
+"Golang
+Plugin 'fatih/vim-go'
+Plugin 'zchee/deoplete-go'
+
+"R 
+Plugin 'jalvesaq/Nvim-R'
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'gaalcaras/ncm-R'
+
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+let g:go_auto_sameids = 1
+
+let g:go_auto_type_info = 1
+
+let g:go_list_type = "quickfix"
+
+"airline
+let g:airline#extensions#tabline#enabled = 1  "show bufferline in airline
+let g:airline#extensions#tabline#show_tabs = 0 "only buffers shown
+let g:airline_powerline_fonts = 0             "symbols and font for airline
+let g:airline_left_sep='' "the separator used on the left side
+let g:airline_right_sep=''  "the separator used on the right side 
+let g:airline_theme='tomorrow'
+
+"ale
+" Ale error and warning signs.
+let g:ale_sign_error = '»'
+let g:ale_sign_warning = '›'
+" Ale integration with airline.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'never'
+
+"completion for nvim
+if has('nvim')
+    " Enable deoplete on startup
+    let g:deoplete#enable_at_startup = 1
+    "use tab completion
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+    "no preview windoww
+    set completeopt-=preview
+endif
+
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+
 " Put your non-Plugin stuff after this line
 
 syntax on         " syntax highlighting
-
-" LEADER KEY
-let mapleader="\<space>"
-
-let g:airline#extensions#tabline#enabled = 1  "show bufferline in airline
-let g:airline_powerline_fonts = 1             "symbols and font for airline
-
-" the separator used on the left side
-let g:airline_left_sep=''
-" " the separator used on the right side 
-let g:airline_right_sep=''
-
-let g:airline_theme='tomorrow'
-
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
-
-" syntastic check on file open
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['eslint']
-
-" conpletion settings for youcompleteme
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
 
 set t_Co=256	  "for colorsheme to work in tmux
 set background=dark
@@ -131,17 +146,29 @@ set hidden 			"buffer swtiching wihtout writing
 set laststatus=2
 set encoding=utf-8
 
+
 colorscheme hybrid
 
+" LEADER KEY
+let mapleader="\<space>"
+
 " keybindings
+" buffer management
 noremap <Leader>l :bn<cr> 
 noremap <Leader>h :bp<cr>
 noremap <Leader>d :bd<cr>
 nnoremap <Leader>w :w<CR>
+"nerdtree
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 
+"golang
+nnoremap <leader>r :GoRun<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+
+
 " writing mode
-map <F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+map <F11> :Goyo <bar> :Goyo x100% <bar> :Limelight!! <bar> :TogglePencil <CR>
 
 " spellcheck language
 inoremap <silent> <F5> <c -O>:call SpellToggle()<cr>
@@ -151,9 +178,7 @@ function SpellToggle()
             set nospell
         else
             set spell
-            set spelllang=nn ",nb,en_us
+            set spelllang=en_us ",nb,en_us,nn
     endif
 endfunctio
-
-
 
