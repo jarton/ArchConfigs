@@ -40,6 +40,10 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/limelight.vim'
 
+"for scheme tmux setup
+Plugin 'sjl/tslime.vim'
+
+
 "javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
@@ -158,6 +162,7 @@ noremap <Leader>l :bn<cr>
 noremap <Leader>h :bp<cr>
 noremap <Leader>d :bd<cr>
 nnoremap <Leader>w :w<CR>
+
 "nerdtree
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 
@@ -165,6 +170,9 @@ nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 nnoremap <leader>r :GoRun<CR>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+
+"tslime (for scheme tmux setup)
+vmap <C-e> <Plug>SendSelectionToTmux
 
 
 " writing mode
